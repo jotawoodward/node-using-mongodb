@@ -1,6 +1,12 @@
-import addnewProduct from '../controllers/controllers'
+import { addnewProduct, getProducts, getProductWithID }  from '../controllers/controllers'
 
-export function routes (app) {
+const routes = (app) => {
   app.route('/products')
-    .post(addnewProduct);
+    .post(addnewProduct)
+    .get(getProducts);
+
+  app.route('/products/:ProductID')
+    .get(getProductWithID);
 }
+
+export default routes;

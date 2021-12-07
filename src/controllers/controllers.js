@@ -9,8 +9,30 @@ export const addnewProduct = (req, res) => {
 
   newProduct.save((err, Product) => {
     if (err){
-      //something
+      res.send(err);
     }
-    res.json()
+    res.json(Product)
   })
+}
+
+export const getProducts = (req, res) => {
+
+  Product.find({}, (err, Product) => {
+    if (err){
+      res.send(err);
+    }
+    res.json(Product)
+  })
+
+}
+
+export const getProductWithID = (req, res) => {
+
+  Product.findById(req.params.ProductID, (err, Product) => {
+    if (err){
+      res.send(err);
+    }
+    res.json(Product)
+  })
+
 }
