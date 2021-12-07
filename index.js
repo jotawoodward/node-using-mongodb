@@ -5,10 +5,12 @@ import mongoose from 'mongoose';
 const app = express();
 const PORT = 4000;
 
-const db = mongoose.connect('mongodb://localhost/productsdb',{
+mongoose.connect('mongodb://localhost/productsdb',{
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
+
+mongoose.Promise = global.Promise;
 
 // bodyparser setup
 app.use(bodyParser.urlencoded({ extended: true }));
